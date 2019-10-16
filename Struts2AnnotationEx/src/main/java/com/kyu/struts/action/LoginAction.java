@@ -1,21 +1,21 @@
 package com.kyu.struts.action;
 
-import org.apache.struts2.convention.annotation.Action;
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.Namespaces;
-import org.apache.struts2.convention.annotation.Result;
-
 import com.opensymphony.xwork2.ActionSupport;
 
-@Action(value = "login", results = { 
-		@Result(name = "success", location = "/WEB-INF/contents/welcome.jsp"),
-		@Result(name = "error", location = "/WEB-INF/contents/error.jsp") })
-@Namespaces(value = { @Namespace("/hello"), @Namespace("/") })
 public class LoginAction extends ActionSupport {
 	public String execute() throws Exception {
-		if("yonguki1992".equals(getName()) && "1234".equals(getPwd()))
-			return SUCCESS;
-		else return ERROR;
+		return SUCCESS;
+	}
+	
+	// 폼검증하는 메서드
+	@Override
+	public void validate(){
+		if("".equals(getName())){
+			addFieldError("name", "UserName can't be empty");
+		}
+		if("".equals(getPwd())){
+			addFieldError("pwd", "Password can't be empty");
+		}
 	}
 	
 	// Java Bean to hold the form parameters

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- /콘텍스트명/package namespace/action name -->
+	<package name="hello" namespace="/helloWorld" extends="struts-default">
+		<!-- URL 맵핑 : 브라우저에서 사용할 주소를 만듬 -->
+		<action name="hello" class="com.kyu.struts.action.HelloAction">
+			<result name="success">/WEB-INF/view/hello.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
+		</action>
+		<action name="bye" class="com.kyu.struts.action.ByeAction">
+			<result name="success">/WEB-INF/view/bye.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
+		</action>
+		<action name="byebye">
+			<result>/WEB-INF/view/bye.jsp</result>
+		</action>
+		<action name="form">
+			<result>/WEB-INF/view/form.jsp</result>
+		</action>
+		<action name="formOk" class="com.kyu.struts.action.FormOkAction">
+			<result name="success">/WEB-INF/view/formOk.jsp</result>
+		</action>
+	</package>
+
+</struts>

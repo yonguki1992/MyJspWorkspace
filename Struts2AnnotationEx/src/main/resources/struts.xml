@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- /콘텍스트명/package namespace/action name -->
+	<package name="hello" namespace="/" extends="struts-default">
+		<!-- URL 맵핑 : 브라우저에서 사용할 주소를 만듬 -->
+		<action name="">
+			<result>/WEB-INF/contents/login.jsp</result>
+		</action>
+		<!-- 경로의 처음이 / 면 namespace 포함하지 않음 -->
+		<action name="login" class="com.kyu.struts.action.LoginAction">
+			<result name="success">/WEB-INF/contents/welcome.jsp</result>
+			<result name="error">/WEB-INF/contents/error.jsp</result>
+			<result name="input">/WEB-INF/contents/login.jsp</result>
+		</action>
+	</package>
+
+</struts>

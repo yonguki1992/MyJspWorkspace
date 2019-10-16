@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts> 
+	<!-- /콘텍스트명/package namespace/action name -->
+	<package name="resultPath" namespace="/User" extends="struts-default">
+		<!-- URL 맵핑 : 브라우저에서 사용할 주소를 만듬 -->
+		<action name="home1">
+			<result>results/view.jsp</result>
+		</action>
+		<!-- 경로의 처음이 / 면 namespace 포함하지 않음 -->
+		<action name="home2">
+			<result>/results/view.jsp</result>
+		</action>
+		<action name="home3">
+			<result>/WEB-INF/content/view.jsp</result>
+		</action>
+		<action name="home4">
+			<result>/view.jsp</result>
+		</action>
+	</package>
+
+</struts>
