@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="memo" namespace="/" extends="struts-default">
+		<action name="connEx" class="com.kyu.struts.memo.action.ConnAction">
+			<result>/WEB-INF/view/connEx.jsp</result>
+		</action>
+
+		<!-- 와일드카드는 반드시 맨 뒤에 나와야 한다. 액션명이 jsp 파일명이 된다. -->
+		<action name="list" class="com.kyu.struts.memo.action.ListAction">
+			<result>/WEB-INF/view/list.jsp</result>
+		</action>
+
+		<action name="insertOk" class="com.kyu.struts.memo.action.InsertOkAction">
+			<result>/WEB-INF/view/insertOk.jsp</result>
+		</action>
+		
+		<action name="updateOk" class="com.kyu.struts.memo.action.UpdateOkAction">
+			<result>/WEB-INF/view/updateOk.jsp</result>
+		</action>
+		<action name="deleteOk" class="com.kyu.struts.memo.action.DeleteOkAction">
+			<result>/WEB-INF/view/deleteOk.jsp</result>
+		</action>
+
+		<action name="*">
+			<result>/WEB-INF/view/{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>

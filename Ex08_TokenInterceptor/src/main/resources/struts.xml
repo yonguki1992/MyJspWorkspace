@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- constant to define global properties file for i18n messages -->
+	<constant name="struts.custom.i18n.resources" value="global"></constant>
+	<!-- /콘텍스트명/package namespace/action name -->
+	<package name="action" namespace="/" extends="struts-default">
+		<interceptors>
+			<!-- 새로운 인터셉터 등록 -->
+			<interceptor name="authentication" class="com.kyu.struts.interceptors.AuthenticationInterceptor" />
+			<!-- 인터셉터 스택 지정 -->
+			<interceptor-stack name="authStack">
+				<interceptor-ref name="authentication" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<!-- 기본 인터셉터 등록 -->
+		<default-interceptor-ref name="authStack" ></default-interceptor-ref>
+		<global-results>
+			<result name="login" type="redirect">/login.action</result>
+		</global-results>
+		<action name="index">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>/WEB-INF/view/index.jsp</result>
+		</action>
+		<action name="home">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result>/WEB-INF/view/login.jsp</result>
+		</action>
+		<action name="login" class="com.kyu.struts.action.LoginAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/WEB-INF/view/Welcome.jsp</result>
+			<result name="input">/WEB-INF/view/login.jsp</result>
+		</action>
+		<!-- 따로 인터셉터 설정을 하지 않으면 기본인터셉터가 적용 -->
+		<action name="welcome" class="com.kyu.struts.action.WelcomeAction">
+			<result>/WEB-INF/view/Welcome.jsp</result>
+		</action>
+		<!-- 와일드카드는 반드시 맨 뒤에 나와야 한다. 액션명이 jsp 파일명이 된다. -->
+		<action name="*">
+			<result>/WEB-INF/view/{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>

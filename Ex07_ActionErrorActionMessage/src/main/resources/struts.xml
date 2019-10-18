@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- constant to define global properties file for i18n messages -->
+	<constant name="struts.custom.i18n.resources" value="global"></constant>
+	<!-- /콘텍스트명/package namespace/action name -->
+	<package name="action" namespace="/" extends="struts-default">
+		<action name="">
+			<result>/WEB-INF/view/index.jsp</result>
+		</action>
+		<action name="welcome" class="com.kyu.struts.action.WelcomeAction">
+			<result name="success">/WEB-INF/view/Welcome.jsp</result>
+			<result name="input">/WEB-INF/view/login.jsp</result>
+		</action>
+
+		<!-- 와일드카드는 반드시 맨 뒤에 나와야 한다. 액션명이 jsp 파일명이 된다. -->
+		<action name="*">
+			<result>/WEB-INF/view/{1}.jsp</result>
+		</action>
+	</package>
+
+</struts>
